@@ -31,9 +31,11 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <View style={styles.container}>
-        <Appbar>
-          <Appbar.Content title="Recipe App" />
-        </Appbar>
+        <Appbar.Header>
+          {/* <Appbar.Content title="Recipe App" /> */}
+          <Text style={styles.header}>Max's Recipe App</Text>
+          {/* <Appbar.Action icon="calendar" onPress={() => {}} /> */}
+         </Appbar.Header>
         <Searchbar
           placeholder="search here..."
           value={searchQuery}
@@ -62,8 +64,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    color: "black",
   },
   card: {
     margin: 20,
+  },
+  header: {
+    fontSize: 40,
+    fontWeight: "bold",
   },
 });
