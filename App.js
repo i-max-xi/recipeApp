@@ -43,7 +43,6 @@ export default function App() {
           value={searchQuery}
           onChangeText={handleSearch}
           style={styles.searchBar}
-          inputStyle={styles.searchInput}
         />
         <ScrollView>
           {filteredMeals.map((meal) => (
@@ -66,23 +65,25 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-  },
-  searchBar: {
-    marginHorizontal: 10,
-    marginTop: 10,
-    marginBottom: 20,
-    borderRadius: 10,
-    backgroundColor: "#f2f2f2",
-  },
-  searchInput: {
-    fontSize: 16,
-    color: "#333",
-  },
-  card: {
-    margin: 20,
+    margin: 0,
   },
   header: {
     fontSize: 40,
     fontWeight: "bold",
+    textAlign: "center",
+    width: "100%",
+    padding: 10,
   },
+  searchBar: {
+    marginTop: 10,
+    marginBottom: 20,
+    borderRadius: 35,
+    backgroundColor: "#f2f2f2",
+    width: "60%",
+    alignSelf: "center",
+  },
+  card: {
+    margin: 20,
+  },
+ 
 });
