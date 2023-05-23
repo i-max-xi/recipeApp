@@ -28,21 +28,25 @@ export default function App() {
     setSearchQuery(query);
   };
 
+  const filteredMeals = meals.filter((meal) =>
+    meal.strCategory.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
-    <SafeAreaProvider>
+    <SafeAreaProvider> 
       <View style={styles.container}>
         <Appbar.Header>
-          {/* <Appbar.Content title="Recipe App" /> */}
           <Text style={styles.header}>Max's Recipe App</Text>
-          {/* <Appbar.Action icon="calendar" onPress={() => {}} /> */}
-         </Appbar.Header>
+        </Appbar.Header>
         <Searchbar
-          placeholder="search here..."
+          placeholder="Search here..."
           value={searchQuery}
           onChangeText={handleSearch}
+          style={styles.searchBar}
+          inputStyle={styles.searchInput}
         />
         <ScrollView>
-          {meals.map((meal) => (
+          {filteredMeals.map((meal) => (
             <Card key={meal.idCategory} style={styles.card}>
               <Card.Title title={meal.strCategory} />
               <Card.Cover source={{ uri: meal.strCategoryThumb }} />
@@ -52,7 +56,7 @@ export default function App() {
             </Card>
           ))}
         </ScrollView>
-        {/* <StatusBar style="auto" /> */}
+        <StatusBar style="auto" />
       </View>
     </SafeAreaProvider>
   );
@@ -62,9 +66,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-    color: "black",
+  },
+  searchBar: {
+    marginHorizontal: 10,
+    marginTop: 10,
+    marginBottom: 20,
+    borderRadius: 10,
+    backgroundColor: "#f2f2f2",
+  },
+  searchInput: {
+    fontSize: 16,
+    color: "#333",
   },
   card: {
     margin: 20,
